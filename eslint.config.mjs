@@ -14,6 +14,24 @@ export default withNuxt(
       '@typescript-eslint/no-unused-vars': 'off',
       'vue/html-self-closing': 'off',
       "@typescript-eslint/no-explicit-any": 'off',
+    },
+    plugins: {
+      'vue': require('eslint-plugin-vue'),
+      '@typescript-eslint': require('@typescript-eslint/eslint-plugin'),
+      'import': require('eslint-plugin-import'),
+      'prettier': require('eslint-plugin-prettier'),
+    },
+    extends: [
+      'plugin:vue/vue3-recommended',
+      'plugin:@typescript-eslint/recommended',
+      'plugin:import/typescript',
+      'plugin:prettier/recommended',
+      'prettier/vue',
+    ],
+    env: {
+      browser: true,
+      node: true,
+      es6: true,
     }
   }
 )

@@ -1,3 +1,5 @@
+import { transformAssetUrls } from 'vite-plugin-vuetify';
+
 export default defineNuxtConfig({
     compatibilityDate: '2025-05-15',
     devtools: { enabled: true },
@@ -11,7 +13,7 @@ export default defineNuxtConfig({
                 {
                     rel: 'icon',
                     type: 'image/x-icon',
-                    href: '/favicon.ico',
+                    href: 'assets/image/favicon.ico',
                 },
             ],
         },
@@ -46,6 +48,7 @@ export default defineNuxtConfig({
             { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' },
             { code: 'zh', name: '中文', iso: 'zh-CN', file: 'zh.json' },
             { code: 'vi', name: 'Tiếng Việt', iso: 'vi-VI', file: 'vi.json' },
+            { code: 'ko', name: '한국어', iso: 'ko-KR', file: 'ko.json' },
         ],
         defaultLocale: 'vi',
         strategy: 'no_prefix',
@@ -87,6 +90,11 @@ export default defineNuxtConfig({
         },
         optimizeDeps: {
             include: ['vuetify', 'dayjs'],
+        },
+        vue: {
+            template: {
+                transformAssetUrls,
+            },
         },
     },
     pinia: {
