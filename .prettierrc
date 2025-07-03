@@ -14,5 +14,5 @@
     "singleQuote": true,
     "tabWidth": 4,
     "useTabs": false,
-    "trailingComma": "es5"
+    "trailingComma": "all"
 }

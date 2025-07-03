@@ -1,16 +1,15 @@
 <template>
   <v-app>
     <v-main>
+      Default
       <slot> </slot>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts" setup>
-definePageMeta({
-  middleware: ['auth'],
-});
-
 </script>
 
-<style type="scss"></style>
+<style type="scss">
+
+</style>

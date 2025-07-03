@@ -3,10 +3,24 @@ import { transformAssetUrls } from 'vite-plugin-vuetify';
 export default defineNuxtConfig({
     compatibilityDate: '2025-05-15',
     devtools: { enabled: true },
-    modules: ['@nuxt/eslint', '@pinia/nuxt', '@nuxtjs/i18n', 'vuetify-nuxt-module', 'dayjs-nuxt'],
+    modules: [
+        'vuetify-nuxt-module',
+        '@nuxtjs/i18n',
+        '@nuxt/eslint',
+        'dayjs-nuxt',
+        '@pinia/nuxt',
+        '@nuxt/devtools',
+        '@nuxt/icon',
+        '@nuxt/image',
+        '@nuxt/fonts',
+        '@nuxtjs/color-mode',
+    ],
+    ssr: false,
     app: {
         head: {
             charset: 'utf-8',
+            title: 'Nuxt 3 Project',
+            titleTemplate: '%s',
             viewport: 'width=device-width, initial-scale=1',
             meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
             link: [
@@ -19,7 +33,6 @@ export default defineNuxtConfig({
         },
     },
     css: ['~/assets/scss/styles.scss'],
-    ssr: false,
     components: [
         {
             path: '~/components/',
@@ -36,8 +49,8 @@ export default defineNuxtConfig({
     },
     eslint: {
         config: {
-            autoInit: false,
-            standalone: false,
+            autoInit: true,
+            standalone: true,
         },
     },
     build: {
@@ -79,6 +92,12 @@ export default defineNuxtConfig({
             },
         },
         vuetifyOptions: './vuetify.config.ts',
+    },
+    colorMode: {
+        preference: 'system', // default value of $colorMode.preference
+        fallback: 'light', // fallback value if not system preference found
+        classSuffix: '',
+        classPrefix: '',
     },
     vite: {
         css: {
