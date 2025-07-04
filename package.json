@@ -26,6 +26,8 @@
     "dayjs-nuxt": "^2.1.11",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-import": "^2.32.0",
+    "highcharts-vue": "^2.0.1",
+    "mitt": "^3.0.1",
     "nuxt": "^3.17.5",
     "pinia": "^3.0.3",
     "vue": "^3.5.17",

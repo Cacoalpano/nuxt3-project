@@ -1,1 +1,8 @@
-{}
+{
+    "dialog": {
+        "title": "Notification",
+        "confirm": "Confirm",
+        "close": "Close",
+        "cancel": "Cancel"
+    }
+}

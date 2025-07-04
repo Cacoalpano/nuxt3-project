@@ -11,8 +11,8 @@ export const COOKIE_KEY = {
 };
 
 export const STORAGE_KEY = {
-    theme: 'theme',
-    isLogin: 'isLogin',
+    token: 'accessToken',
+    user: 'user',
 };
 
 export const NETWORK = {

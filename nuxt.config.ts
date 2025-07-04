@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     ],
     ssr: false,
     app: {
+        baseURL: '/',
         head: {
             charset: 'utf-8',
             title: 'Nuxt 3 Project',
@@ -31,6 +32,7 @@ export default defineNuxtConfig({
                 },
             ],
         },
+    
     },
     css: ['~/assets/scss/styles.scss'],
     components: [
@@ -80,7 +82,7 @@ export default defineNuxtConfig({
         client: process.env.NODE_ENV === 'production',
     },
     dayjs: {
-        locales: ['en', 'zh', 'vi'],
+        locales: ['en', 'zh', 'vi', 'ko'],
         plugins: ['utc', 'timezone', 'relativeTime', 'customParseFormat'],
         defaultLocale: 'vi',
         defaultTimezone: 'Asia/Ho_Chi_Minh',

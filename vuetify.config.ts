@@ -8,7 +8,7 @@ export default defineVuetifyConfiguration({
         fallback: 'en',
     },
     theme: {
-        defaultTheme: 'light',
+        defaultTheme: 'dark',
     },
     icons: {
         defaultSet: 'mdi',
