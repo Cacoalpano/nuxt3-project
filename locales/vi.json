@@ -1,6 +1,6 @@
 {
     "dialog": {
-        "title": "Thông báo",
+        "info": "Thông báo",
         "confirm": "Xác nhận",
         "cancel": "Hủy bỏ",
         "close": "Đóng"

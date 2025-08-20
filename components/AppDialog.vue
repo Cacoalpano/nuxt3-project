@@ -17,68 +17,48 @@
 </template>
 
 <script lang="ts" setup>
-const dialog = ref(false);
-const persistent = ref(false);
 const { t } = useI18n();
-
-let title = t('dialog.title');
-let message = '';
-let cancleText = t('dialog.cancel');
-let confirmText = t('dialog.confirm');
-
-let cancleCallback: (() => void) | null = null;
-let confirmCallback: (() => void) | null = null;
-
-const payLoad = ref<PayLoadDialog | null>(null);
-
-const init = (payload: PayLoadDialog) => {
-  dialog.value = true;
-  payLoad.value = payload;
-  title = payload.title || t('dialog.title');
-  persistent.value = payload.backdrop || false;
-  message = payload.message || '';
-  cancleText = payload.cancle || t('dialog.cancel');
-  confirmText = payload.confirm || t('dialog.confirm');
-  cancleCallback = payload.onCancle || null;
-  confirmCallback = payload.onConfirm || null;
-  dialog.value = true;
-}
-
-const removeAllCallbacks = () => {
-  cancleCallback = null;
-  confirmCallback = null;
-}
-
-onMounted(() => {
-  useDialog().on(init);
+const coreStore = useCoreStore();
+const title = computed(() => {
+  return coreStore.dialog.data?.type === 'info' ? t('dialog.info') : t('dialog.confirm');
 });
 
-onBeforeUnmount(() => {
-  useDialog().off();
+const message = computed(() => {
+  return coreStore.dialog.data?.message || '';
 });
+
+const persistent = computed(() => {
+  return coreStore.dialog.data?.backdrop || false;
+});
+
+const cancleText = computed(() => {
+  return coreStore.dialog.data?.cancle ? t(coreStore.dialog.data?.cancle) : t('dialog.cancel');
+});
+
+const confirmText = computed(() => {
+  return coreStore.dialog.data?.confirm ? t(coreStore.dialog.data?.confirm) : t('dialog.confirm');
+});
+
+const dialog = computed( () => {
+  return coreStore.dialog.status || false;
+})
 
 const close = () => {
-  if (cancleCallback) {
-    cancleCallback();
+  if (coreStore.dialog.data?.onCancle) {
+    coreStore.dialog.data.onCancle(); 
   }
-  dialog.value = false;
-  removeAllCallbacks();
+  coreStore.closeDialog();
 }
 
 const confirm = () => {
-  if (confirmCallback) {
-    confirmCallback();
+  if (coreStore.dialog.data?.onConfirm) {
+    coreStore.dialog.data?.onConfirm();
   }
-  dialog.value = false;
-  removeAllCallbacks();
+  coreStore.closeDialog();
 }
 
 const enter = () => {
-  if (confirmCallback) {
-    confirm();
-  } else {
-    close();
-  }
+  coreStore.dialog.data?.onConfirm ? confirm() : close();
 }
 
 

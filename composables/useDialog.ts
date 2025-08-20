@@ -16,9 +16,8 @@ type EventDialog = {
 };
 
 export interface PayLoadDialog {
-    title: string;
-    message: string;
     type: 'info' | 'confirm';
+    message: string;
     cancle: string;
     confirm?: string;
     backdrop: boolean;
