@@ -1,25 +1,25 @@
 import { transformAssetUrls } from 'vite-plugin-vuetify';
 
 export default defineNuxtConfig({
-    compatibilityDate: '2025-05-15',
+    compatibilityDate: '2025-08-15',
     devtools: { enabled: true },
     modules: [
-      'vuetify-nuxt-module',
-      '@nuxtjs/i18n',
-      '@nuxt/eslint',
-      'dayjs-nuxt',
-      '@pinia/nuxt',
-      '@nuxt/devtools',
-      '@nuxt/icon',
-      '@nuxt/image',
-      '@nuxt/fonts',
-      '@nuxtjs/color-mode',
-      '@nuxt/content',
-      '@nuxt/scripts',
+        '@nuxt/eslint',
+        '@nuxt/devtools',
+        '@nuxt/image',
+        '@nuxt/icon',
+        '@nuxt/fonts',
+        '@nuxt/scripts',
+        '@nuxtjs/i18n',
+        '@pinia/nuxt',
+        '@nuxt/content',
+        'vuetify-nuxt-module',
+        'dayjs-nuxt',
+        '@nuxtjs/color-mode',
     ],
     ssr: false,
     app: {
-        baseURL: '/',
+        baseURL: process.env.BASE_PATH || '/',
         head: {
             charset: 'utf-8',
             title: 'Nuxt 3 Project',
@@ -46,11 +46,14 @@ export default defineNuxtConfig({
         },
     ],
     runtimeConfig: {
+        recaptcha: process.env.RECAPTCHA,
+        recaptchaKey: process.env.RECAPTCHA_KEY,
+
         public: {
             apiUrl: process.env.API_URL,
             wsUrl: process.env.WS_URL,
-            recaptcha: process.env.RECAPTCHA,
-            recaptchaKey: process.env.RECAPTCHA_KEY,
+            apiPrefix: process.env.API_PREFIX,
+            wsPrefix: process.env.WS_PREFIX,
         },
     },
     eslint: {
@@ -71,9 +74,8 @@ export default defineNuxtConfig({
         ],
         defaultLocale: 'vi',
         strategy: 'no_prefix',
-        langDir: '../locales/',
-        lazy: true,
-        vueI18n: '~/i18n.config.ts',
+        langDir: '../app/locales/',
+        vueI18n: '~/config/i18n.config.ts',
         detectBrowserLanguage: {
             useCookie: true,
             alwaysRedirect: true,
@@ -82,8 +84,8 @@ export default defineNuxtConfig({
         },
     },
     sourcemap: {
-        server: process.env.NODE_ENV === 'production',
-        client: process.env.NODE_ENV === 'production',
+        server: process.env.NODE_ENV !== 'production',
+        client: process.env.NODE_ENV !== 'production',
     },
     dayjs: {
         locales: ['en', 'zh', 'vi', 'ko'],
@@ -97,13 +99,7 @@ export default defineNuxtConfig({
                 configFile: './assets/scss/vuetify.scss',
             },
         },
-        vuetifyOptions: './vuetify.config.ts',
-    },
-    colorMode: {
-        preference: 'system', // default value of $colorMode.preference
-        fallback: 'light', // fallback value if not system preference found
-        classSuffix: '',
-        classPrefix: '',
+        vuetifyOptions: './app/config/vuetify.config.ts',
     },
     vite: {
         css: {
@@ -121,8 +117,27 @@ export default defineNuxtConfig({
                 transformAssetUrls,
             },
         },
+        server: {
+            proxy: {
+                [`process.env.API_PREFIX`]: {
+                    target: process.env.API_URL,
+                    ws: false,
+                    changeOrigin: true,
+                    secure: true,
+                    rewrite: (path) => path.replace(new RegExp(`^${process.env.API_PREFIX}`), ''),
+                },
+                [`process.env.WS_PREFIX`]: {
+                    target: process.env.WS_URL,
+                    ws: true,
+                    changeOrigin: true,
+                    secure: false,
+                    rewrite: (path) => path.replace(new RegExp(`^${process.env.WS_PREFIX}`), ''),
+                },
+            },
+        },
     },
     pinia: {
-        storesDirs: ['./stores/**'],
+        storesDirs: ['./app/stores/**'],
     },
+    experimental: {},
 });
