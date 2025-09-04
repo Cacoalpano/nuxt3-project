@@ -15,7 +15,6 @@ export default defineNuxtConfig({
         '@nuxt/content',
         'vuetify-nuxt-module',
         'dayjs-nuxt',
-        '@nuxtjs/color-mode',
     ],
     ssr: false,
     app: {
