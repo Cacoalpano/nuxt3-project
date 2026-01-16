@@ -5,6 +5,10 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+  layout: 'not-auth'
+});
+
 const coreStore = useCoreStore();
 const loading = useLoadingIndicator();
 

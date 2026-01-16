@@ -1,5 +1,5 @@
 <template>
-  <v-footer fixed class="app-footer" :elevation="8">
+  <v-footer fixed class="app-footer" :elevation="12">
     <v-col class="text-center position-relative pa-0">
       <span class="position-absolute left-0">
         {{ date }}
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-const date = ref<String>();
+const date = ref<String>();  
 
 onMounted(() => {
   setInterval(() => {
@@ -24,4 +24,8 @@ onMounted(() => {
 });
 </script>
 
-<style type="scss" scoped></style>
+<style type="scss" scoped>
+.app-footer {
+  z-index: 1200 !important;
+}
+</style>

@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    <app-header></app-header>
+    <app-header @toggle-drawer="toggleDrawer"></app-header>
+    <app-sidebar v-model:drawer="drawer"></app-sidebar>
     <v-main>
       <v-container>
         <slot> </slot>
@@ -12,6 +13,12 @@
 </template>
 
 <script lang="ts" setup>
+const drawer = ref(true);
+
+const toggleDrawer = () => {
+  drawer.value = !drawer.value;
+};
 </script>
 
-<style type="scss"></style>
+<style scoped lang="scss">
+</style>

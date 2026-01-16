@@ -1,4 +1,9 @@
-{
+{   
+    "menu": {
+        "account": "계정",
+        "services": "서비스",
+        "market": "시장"
+    },
     "dialog": {
         "title": "알림",
         "confirm": "확인",

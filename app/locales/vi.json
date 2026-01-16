@@ -1,4 +1,9 @@
 {
+    "menu": {
+        "account": "Tài khoản",
+        "services": "Dịch vụ",
+        "market": "Thị trường"
+    },
     "dialog": {
         "info": "Thông báo",
         "confirm": "Xác nhận",

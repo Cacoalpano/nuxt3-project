@@ -1,4 +1,9 @@
 {
+    "menu": {
+        "account": "Account",
+        "services": "Services",
+        "market": "Market"
+    },
     "dialog": {
         "title": "Notification",
         "confirm": "Confirm",

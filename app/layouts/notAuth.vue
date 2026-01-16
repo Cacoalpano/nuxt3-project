@@ -1,14 +1,13 @@
 <template>
   <div>
-
+    <slot />
   </div>
 </template>
 
 <script lang="ts" setup>
-definePageMeta({
-  layout: 'default'
-});
 
 </script>
 
-<style></style>
+<style>
+
+</style>

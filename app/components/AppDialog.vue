@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const coreStore = useCoreStore();
 const title = computed(() => {
   return coreStore.dialog.data?.type === 'info' ? t('dialog.info') : t('dialog.confirm');

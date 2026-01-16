@@ -1,2 +1,13 @@
 {
+    "menu": {
+        "account": "账户",
+        "services": "服务",
+        "market": "市场"
+    },
+    "dialog": {
+        "info": "通知",
+        "confirm": "确认",
+        "cancel": "取消",
+        "close": "关闭"
+    }
 }
