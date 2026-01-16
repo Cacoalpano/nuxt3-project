@@ -4,6 +4,11 @@
         "services": "서비스",
         "market": "시장"
     },
+    "logout": "로그아웃",
+    "theme": {
+        "light": "라이트",
+        "dark": "다크"
+    },
     "dialog": {
         "title": "알림",
         "confirm": "확인",

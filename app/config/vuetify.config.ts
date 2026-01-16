@@ -5,6 +5,12 @@ export default defineVuetifyConfiguration({
     locale: {
         locale: 'vi',
         fallback: 'en',
+        messages: {
+            en: { /* Vuetify English messages */ },
+            vi: { /* Vuetify Vietnamese messages */ },
+            zh: { /* Vuetify Chinese messages */ },
+            ko: { /* Vuetify Korean messages */ },
+        },
     },
     theme: {
         defaultTheme: 'dark',

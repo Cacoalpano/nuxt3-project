@@ -4,6 +4,11 @@
         "services": "Dịch vụ",
         "market": "Thị trường"
     },
+    "logout": "Đăng xuất",
+    "theme": {
+        "light": "Sáng",
+        "dark": "Tối"
+    },
     "dialog": {
         "info": "Thông báo",
         "confirm": "Xác nhận",

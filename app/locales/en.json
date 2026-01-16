@@ -4,6 +4,11 @@
         "services": "Services",
         "market": "Market"
     },
+    "logout": "Logout",
+    "theme": {
+        "light": "Light",
+        "dark": "Dark"
+    },
     "dialog": {
         "title": "Notification",
         "confirm": "Confirm",

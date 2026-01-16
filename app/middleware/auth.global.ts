@@ -1,6 +1,6 @@
 import { useAuthStore } from '~/stores/auth';
 
-const publicPaths = ['/auth/login', '/market'];
+const publicPaths = ['/auth/login', '/market/board'];
 
 export default defineNuxtRouteMiddleware((to, from) => {
     const { isLoggedIn } = useAuthStore();
